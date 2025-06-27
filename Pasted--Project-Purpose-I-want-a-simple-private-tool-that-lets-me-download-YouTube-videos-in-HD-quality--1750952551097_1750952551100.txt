@@ -1,0 +1,115 @@
+🧠 Project Purpose:
+I want a simple private tool that lets me download YouTube videos in HD quality (at least 720p) without ads or API. This is only for my personal use.
+
+
+---
+
+📌 Features Required:
+
+1. A clean form with:
+
+Input box to paste full YouTube video URL
+
+Dropdown to choose format: HD (MP4) or MP3 (Audio only)
+
+Download button
+
+Simple progress bar (optional)
+
+
+
+2. HD quality only:
+
+Must download minimum 720p or higher video
+
+Even if it takes a few seconds extra, I need full HD result
+
+
+
+3. Vacancy system:
+
+A <div id="vacancy-area"></div> must be placed on page
+
+I will use it later for more tools or widgets
+
+
+
+4. Technologies to use:
+
+HTML, CSS, JavaScript (vanilla only) for frontend
+
+PHP for backend (no framework)
+
+Use yt-dlp (not YouTube API) to fetch and download videos
+
+Use ffmpeg (optional) for merging video/audio or MP3 conversion
+
+
+
+5. Backend command example (for HD):
+
+
+
+yt-dlp -f "bestvideo[ext=mp4][height>=720]+bestaudio[ext=m4a]/best[height>=720]" \
+--merge-output-format mp4 -o "/tmp/output.%(ext)s" "VIDEO_URL"
+
+6. Final file must:
+
+Be downloaded directly in browser
+
+Auto-delete from server after download
+
+Work without login, account, or ads
+
+
+
+7. File Structure:
+
+
+
+/project-root
+├─ index.html          ← Frontend form page
+├─ app.js              ← Handles fetch + progress
+├─ style.css           ← Simple CSS (optional)
+└─ /private
+    ├─ download.php    ← Backend PHP file with yt-dlp
+    └─ /tmp            ← Temp files go here (auto delete)
+
+
+---
+
+✅ Final Conditions:
+
+✅ No YouTube API
+
+✅ No ads or redirects
+
+✅ Must return HD result (MP4 or MP3)
+
+✅ Must be simple, fast, and private
+
+✅ Must not break other designs (vacancy system included)
+
+✅ Use yt-dlp via PHP shell_exec() or exec()
+
+✅ Tool is for private use only
+
+
+
+---
+
+🗂 Frontend Sample Form (HTML):
+
+<form id="dl-form">
+  <input type="url" name="url" placeholder="Paste YouTube URL" required>
+  <select name="format">
+    <option value="hd">HD (MP4)</option>
+    <option value="mp3">MP3 (Audio Only)</option>
+  </select>
+  <button type="submit">Download</button>
+</form>
+
+<div id="vacancy-area">
+  <!-- Reserved for future widgets -->
+</div>
+
